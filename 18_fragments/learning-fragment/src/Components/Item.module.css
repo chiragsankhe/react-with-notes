@@ -1,0 +1,13 @@
+.kgItem {
+    /* background-color: rgb(234, 230, 199); */
+    margin: 5px;
+}
+
+.kgspan {
+    font-weight: 500;
+    color: black;
+}
+
+.button {
+    float: right;
+}
