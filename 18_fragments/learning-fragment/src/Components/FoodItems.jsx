@@ -6,6 +6,7 @@ const FoodItems = ({ foodItems }) => {
 
   let onBuyButton = (item, event) => {
     let newItems = [...activeItems, item];
+    console.log(event);
     setActiveItems(newItems);
   };
 
