@@ -1,52 +1,44 @@
-import { useState } from "react";
+import { useContext, useRef } from "react";
 import { IoIosAddCircle } from "react-icons/io";
+import TodoItemsContext from "../store/todo-item-store";
 
-function AddTodo({ updateToDo }) {
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
+function AddTodo() {
+  const { addNewItems } = useContext(TodoItemsContext);
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
+  const todoNameElement = useRef();
+  const duoDateElement = useRef();
 
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
-  };
+  const handleAddButtonClicked = (event) => {
+    event.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const dueDate = duoDateElement.current.value;
+    console.log(`${todoName}  due on : ${dueDate}`);
 
-  const handleAddButtonClicked = () => {
-    updateToDo(name, date);
-    setDate("");
-    setName("");
+    todoNameElement.current.value = "";
+    duoDateElement.current.value = "";
+
+    addNewItems(todoName, dueDate);
   };
 
   return (
     <div className="container text-center">
-      <div className="row kg-row">
+      <form action="" onSubmit={handleAddButtonClicked} className="row kg-row">
         <div className="col-6">
           <input
             type="text"
-            value={name}
+            ref={todoNameElement}
             placeholder="Enter TODO here"
-            onChange={handleNameChange}
           ></input>
         </div>
         <div className="col-4">
-          <input
-            type="date"
-            value={date}
-            onChange={(event) => handleDateChange(event)}
-          ></input>
+          <input type="date" ref={duoDateElement}></input>
         </div>
         <div className="col-2 ">
-          <button
-            type="button"
-            className={`btn btn-success kg-button`}
-            onClick={handleAddButtonClicked}
-          >
-           <IoIosAddCircle />
+          <button type="submit" className={`btn btn-success kg-button`}>
+            <IoIosAddCircle />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
