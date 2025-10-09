@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
 
 const TodoItemsContext = createContext({
   toDoItems:[],
@@ -6,9 +6,23 @@ const TodoItemsContext = createContext({
   deleteItems:() =>{},
 });
 
-export default TodoItemsContext;
+const todoItemsReducer = (currTodoItems, action) => {
+  let newIodoItems = currTodoItems;
+  if (action.type === "NEW_ITEM") {
+    newIodoItems = [
+      ...currTodoItems,
+      { name: action.payload.itemName, dueDate: action.payload.itemDueDate },
+    ];
+  } else if (action.type === "DELETE_ITEM") {
+    newIodoItems = currTodoItems.filter(
+      (item) => item.name !== action.payload.itemName
+    );
+  }
+  return newIodoItems;
+};
 
-const TodoItemsContextProvider = () = >{
+
+const TodoItemsContextProvider = ({children}) =>{
      
     const [todoItems, dispatchtodoItems] = useReducer(todoItemsReducer, []);
 
@@ -34,5 +48,20 @@ const TodoItemsContextProvider = () = >{
 
     dispatchtodoItems(deleteItemAction);
   };
+  return (
+     <TodoItemsContext.Provider
+      value={{
+        todoItems,
+        addNewItems,
+        deleteItems,
+      }}
+      >
+      {children}
+      
+    </TodoItemsContext.Provider>
+
+    
+
+  )
 }
 export default TodoItemsContextProvider;
