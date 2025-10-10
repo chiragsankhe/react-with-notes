@@ -11,7 +11,7 @@ const CreatePost = () => {
   const tagsElement = useRef();
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const userId = userIdElement.current.value;
     const postTitle = postTitleElement.current.value;
     const postBody = postBodyElement.current.value;
