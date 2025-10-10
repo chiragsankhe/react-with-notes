@@ -24,3 +24,12 @@
 .post-alert {
     margin: 10px
 }
+
+.creatpost {
+    width: 500px;
+    margin-left: 10%;
+    margin-top: 50px;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 20px
+}

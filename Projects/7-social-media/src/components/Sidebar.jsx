@@ -3,7 +3,7 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
     <>
       <div
         className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
-        style={{ width: 280 }}
+        style={{ width: 180 }}
       >
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">

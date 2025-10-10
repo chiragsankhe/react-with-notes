@@ -32,29 +32,18 @@ const DEFAULT_POST_LIST = [
     userId: "user-12",
     tags: ["React", "Coding", "Achievement"],
   },
-  {
-    id: "4",
-    title: "Weekend Trekking Plan",
-    body: "Planning a small trekking trip this weekend with friends. Excited for the adventure!",
-    reaction: 18,
-    userId: "user-7",
-    tags: ["Adventure", "Trekking", "Friends"],
-  },
-  {
-    id: "5",
-    title: "New Job as a React Developer!",
-    body: "Super excited to share that I’ve joined SAAR IT Resource Pvt Ltd as a React Developer!",
-    reaction: 45,
-    userId: "user-3",
-    tags: ["Career", "ReactJS", "Milestone"],
-  },
+ 
 ];
 
 const postListReducer = (currPostList, action) => {
-    let newPostList = currPostList;
-    if(action.type === 'DELETE_POST'){
-     newPostList = currPostList.filter((post) => post.id !== action.payload.postId);
-    }
+  let newPostList = currPostList;
+  if (action.type === "DELETE_POST") {
+    newPostList = currPostList.filter(
+      (post) => post.id !== action.payload.postId
+    );
+  }else if(action.type === "ADD_POST"){
+    newPostList=[action.payload , ...currPostList];
+  }
   return newPostList;
 };
 
@@ -63,15 +52,28 @@ const PostListProvider = ({ children }) => {
     postListReducer,
     DEFAULT_POST_LIST
   );
-  const addPost = () => {};
+  const addPost = (userId, postTitle, postBody, reactions, tags) => {
+    console.log(`${userId} , ${postTitle},${postBody},${reactions},${tags}`)
+    dispatchPostList({
+      type: "ADD_POST",
+      payload: {
+        id: Date.now(),
+    title: postTitle,
+    body: postBody,
+    reaction:reactions,
+    userId: userId,
+    tags:tags,
+      },
+    });
+  };
 
   const deletePost = (postId) => {
-   dispatchPostList({
-    type:'DELETE_POST',
-    payload:{
+    dispatchPostList({
+      type: "DELETE_POST",
+      payload: {
         postId,
-    },
-   })
+      },
+    });
   };
   return (
     <PostList.Provider value={{ postList, addPost, deletePost }}>
