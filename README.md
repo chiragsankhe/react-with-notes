@@ -191,3 +191,126 @@ function User({ name }) {
 
 ---
 
+## 2 React project structure
+### 🚀 1. Beginner React Project Structure
+
+Perfect for small apps or learning projects.
+```
+src/
+│
+├── components/
+│   └── Navbar.jsx
+│   └── Footer.jsx
+│
+├── pages/
+│   └── Home.jsx
+│   └── About.jsx
+│
+├── assets/
+│   └── images/
+│   └── styles/
+│
+├── App.jsx
+├── index.js
+└── App.css
+```
+### 🚀 2. Intermediate / Production-Ready Structure
+
+Use this for real projects, GitHub portfolio, and interviews.
+```
+src/
+│
+├── api/
+│   └── axiosInstance.js
+│   └── userApi.js
+│
+├── components/
+│   ├── common/
+│   │    └── Button.jsx
+│   │    └── Loader.jsx
+│   └── layout/
+│        └── Navbar.jsx
+│        └── Sidebar.jsx
+│
+├── context/
+│   └── AuthContext.jsx
+│   └── ThemeContext.jsx
+│
+├── hooks/
+│   └── useAuth.js
+│   └── useFetch.js
+│
+├── pages/
+│   └── Home/
+│        ├── Home.jsx
+│        ├── Home.css
+│   └── Login/
+│        ├── Login.jsx
+│        ├── Login.css
+│
+├── router/
+│   └── AppRouter.jsx
+│
+├── utils/
+│   └── helpers.js
+│   └── constants.js
+│
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   ├── styles/
+│        └── global.css
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+✔ Used in most production apps
+✔ Clean separation of pages, logic, API, hooks
+✔ Easy maintenance and scaling
+
+### 🏢 3. Enterprise-Level Folder Structure
+
+Used in big companies (large apps).
+```
+src/
+│
+├── app/
+│   ├── store.js
+│   ├── rootReducer.js
+│   └── AppProvider.jsx
+│
+├── features/     (Redux slices / logic per feature)
+│   ├── auth/
+│   │    ├── AuthSlice.js
+│   │    ├── api.js
+│   │    ├── components/
+│   │    └── pages/
+│   └── products/
+│        ├── ProductSlice.js
+│        ├── api.js
+│        ├── components/
+│        └── pages/
+│
+├── components/   (Global reusable components)
+│   ├── ui/
+│   ├── layout/
+│   └── forms/
+│
+├── hooks/
+├── utils/
+├── configs/      (API endpoints, environment, constants)
+├── services/     (API + external integrations)
+├── assets/
+├── routes/
+│   └── index.jsx
+├── styles/
+│   ├── tailwind.css
+│   ├── variables.css
+│   └── mixins.css
+│
+├── App.jsx
+└── main.jsx
+```
+
