@@ -591,11 +591,6 @@ return <div>{renderMessage()}</div>;
 
 ---
 
-## Best Practices
-- Use ternary for simple checks  
-- Use `if` for complex JSX  
-- Use `&&` when showing something only on **true**  
-- Avoid deep nested ternaries  
 
 
 
